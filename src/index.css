@@ -118,3 +118,314 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Migrated theme CSS */
+@layer base {
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  :root {
+    --background: 220 27% 8%;
+    --foreground: 220 9% 95%;
+    --card: 220 27% 12%;
+    --card-foreground: 220 9% 95%;
+    --popover: 220 27% 12%;
+    --popover-foreground: 220 9% 95%;
+    --primary: 280 100% 70%;
+    --primary-foreground: 220 9% 95%;
+    --secondary: 45 93% 65%;
+    --secondary-foreground: 220 9% 95%;
+    --muted: 220 27% 18%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 316 100% 75%;
+    --accent-foreground: 220 9% 95%;
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 220 9% 95%;
+    --border: 220 27% 18%;
+    --input: 220 27% 18%;
+    --ring: 280 100% 70%;
+    --radius: 1rem;
+    
+    /* Game-specific colors - More vibrant and playful */
+    --space-deep: 233 46% 20%;
+    --space-mid: 233 50% 9%;
+    --space-dark: 0 0% 0%;
+    --star-glow: 45 100% 65%;
+    --obstacle-danger: 0 100% 65%;
+    --rocket-primary: 280 100% 70%;
+    --rocket-flame: 316 100% 75%;
+    
+    /* Fun UI colors */
+    --fun-purple: 280 100% 70%;
+    --fun-pink: 316 100% 75%;
+    --fun-yellow: 45 100% 65%;
+    --fun-cyan: 180 100% 65%;
+    --fun-green: 120 100% 65%;
+    --fun-orange: 30 100% 65%;
+    --fun-blue: 220 100% 70%;
+  }
+
+  .dark {
+    --background: 220 27% 8%;
+    --foreground: 220 9% 95%;
+    --card: 220 27% 12%;
+    --card-foreground: 220 9% 95%;
+    --popover: 220 27% 12%;
+    --popover-foreground: 220 9% 95%;
+    --primary: 280 100% 70%;
+    --primary-foreground: 220 9% 95%;
+    --secondary: 45 93% 65%;
+    --secondary-foreground: 220 9% 95%;
+    --muted: 220 27% 18%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 316 100% 75%;
+    --accent-foreground: 220 9% 95%;
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 220 9% 95%;
+    --border: 220 27% 18%;
+    --input: 220 27% 18%;
+    --ring: 280 100% 70%;
+    
+    /* Game-specific colors for dark mode - More vibrant */
+    --space-deep: 233 46% 20%;
+    --space-mid: 233 50% 9%;
+    --space-dark: 0 0% 0%;
+    --star-glow: 45 100% 65%;
+    --obstacle-danger: 0 100% 65%;
+    --rocket-primary: 280 100% 70%;
+    --rocket-flame: 316 100% 75%;
+    
+    /* Fun UI colors */
+    --fun-purple: 280 100% 70%;
+    --fun-pink: 316 100% 75%;
+    --fun-yellow: 45 100% 65%;
+    --fun-cyan: 180 100% 65%;
+    --fun-green: 120 100% 65%;
+    --fun-orange: 30 100% 65%;
+    --fun-blue: 220 100% 70%;
+  }
+}
+
+.game-canvas {
+  background: linear-gradient(180deg, hsl(var(--space-deep)) 0%, hsl(var(--space-mid)) 50%, hsl(var(--space-dark)) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.star-glow {
+  filter: drop-shadow(0 0 8px hsl(var(--star-glow)));
+}
+
+.obstacle-glow {
+  filter: drop-shadow(0 0 6px hsl(var(--obstacle-danger)));
+}
+
+.rocket-trail {
+  background: linear-gradient(180deg, hsl(var(--rocket-primary)) 0%, hsl(var(--rocket-flame)) 100%);
+  opacity: 0.8;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+.twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shine {
+  animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes bounce-fun {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.05) rotate(1deg); }
+  75% { transform: scale(0.95) rotate(-1deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.3); }
+}
+
+@keyframes rainbow-border {
+  0% { border-color: hsl(var(--fun-purple)); }
+  16% { border-color: hsl(var(--fun-pink)); }
+  33% { border-color: hsl(var(--fun-yellow)); }
+  50% { border-color: hsl(var(--fun-cyan)); }
+  66% { border-color: hsl(var(--fun-green)); }
+  83% { border-color: hsl(var(--fun-orange)); }
+  100% { border-color: hsl(var(--fun-purple)); }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+
+.animate-bounce-fun {
+  animation: bounce-fun 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-rainbow-border {
+  animation: rainbow-border 3s linear infinite;
+}
+
+.animate-float-up {
+  animation: float-up 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+/* Fun button styles */
+.btn-fun {
+  background: linear-gradient(135deg, hsl(var(--fun-purple)), hsl(var(--fun-pink)));
+  border: 3px solid transparent;
+  border-radius: 1.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-fun:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+.btn-fun:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-fun::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-fun:hover::before {
+  left: 100%;
+}
+
+/* Fun card styles */
+.card-fun {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+  border: 2px solid hsl(var(--fun-purple));
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-fun:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3);
+  border-color: hsl(var(--fun-pink));
+}
+
+/* Playful text styles */
+.text-fun-gradient {
+  background: linear-gradient(135deg, hsl(var(--fun-purple)), hsl(var(--fun-pink)), hsl(var(--fun-yellow)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.text-bouncy {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 700;
+}
+
+/* Icon button styles */
+.icon-btn-fun {
+  background: linear-gradient(135deg, hsl(var(--fun-cyan)), hsl(var(--fun-blue)));
+  border: 3px solid hsl(var(--fun-cyan));
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-btn-fun:hover {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+}
+
+.icon-btn-fun:active {
+  transform: rotate(-2deg) scale(0.95);
+}
+
+/* Star collection effect */
+.star-collect {
+  animation: float-up 0.5s ease-out, fade-out 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; transform: translateY(-20px) scale(1.2); }
+}
+
+/* Fuel gauge fun styling */
+.fuel-gauge-fun {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+  border: 3px solid hsl(var(--fun-green));
+  border-radius: 2rem;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+/* Power-up ring styles */
+.powerup-ring {
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Game title styling */
+.game-title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  background: linear-gradient(135deg, hsl(var(--fun-purple)), hsl(var(--fun-pink)), hsl(var(--fun-yellow)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}

@@ -17,4 +17,15 @@ model User {
   handle String?
 
   // Additional columns can be added here
+
+  // Relations
+  selectedRocket      String  @default("rocket_1")
+  maxAltitude         Int     @default(0)
+  stars               Int     @default(0)
+  totalStarsCollected Int     @default(0)
+  totalFlights        Int     @default(0)
+  totalSurvivalTime   Int     @default(0) // in seconds
+
+  // Relations
+  role                String  @default("PLAYER") // ADMIN | PLAYER
 }
